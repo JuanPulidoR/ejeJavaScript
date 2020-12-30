@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parámetros Objetos</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //La creación de un objeto a menudo comienza con la definición e iniciación de una variable
+    //var persona={}//obj vacio
+    var persona = {
+        nombre: ['Bob', 'Smith'],
+        edad: 32,
+        genero: 'masculino',
+        intereses: ['música', 'esquí'],
+        bio: function () {
+            alert(this.nombre[0] + '' + this.nombre[1] + ' tiene ' + this.edad + ' años. Le gusta ' + this.intereses[0] + ' y ' + this.intereses[1] + '.');
+        },
+        saludo: function () {
+            alert('Hola, Soy ' + this.nombre[0] + '. ');
+        }
+    };
+    //console.log(persona.nombre);
+    //persona.bio();
+
+    //La palabra clave this se refiere al objeto actual en el que se está escribiendo el código, 
+    //por lo que en este caso this es equivalente a la persona.
+    //al parecer el this se usa dentro del obj o la función
+    // La función tiene un objeto dentro, con 2 métodos.
+    //Lo pase a arrow funtion, el parámetro es name
+    createNewPerson = (name) => {
+        var obj = {};
+        obj.name = name;
+        obj.greeting = function () {
+            alert('Hi! I\'m ' + this.name + '.');
+        };
+        return obj;
+    }
+    //No se puede hacer arrow funtion
+    function Person(name) {
+        this.name = name;
+        this.greeting = function () {
+            alert('Hi! I\'m ' + this.name + '.');
+        };
+    }
+    //La primera
+    var salva = createNewPerson('Salva');
+    //Segunda, crea un nuevo obj Persona
+    var person1 = new Person('Bob');
+
+    console.log(salva.name);
+    salva.greeting();
+
+    console.log(person1.name);
+    person1.greeting();
+
+
+    //Todo con this
+    function Person1(first, last, age, gender, interests) {
+        this.name = {
+            'first': first,
+            'last': last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function () {
+            alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+        };
+        this.greeting = function () {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    }
+</script>
+
+</html>

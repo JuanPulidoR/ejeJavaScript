@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // las clases en javascript no son tradicionales
+    //son a sociadas como un mecanismo
+    class Foo {
+        constructor(a, b) {
+            this.x = a
+            this.y = b
+        }
+        gimmexy() {
+            return this.x * this.y
+        }
+    }
+    var s = new Foo(2, 5)
+    resul = s.gimmexy()
+    console.log(resul);
+    //extends 
+    class Bar extends Foo {
+        //trae atributos de otra clase
+        constructor(a, b, c) {
+            super(a, b)//parent object
+            this.z = c
+        }
+        gimmexyz() {
+            return super.gimmexy() * this.z
+        }
+    }
+
+    var b = new Bar(5, 15, 25)
+    console.log(b.x);
+    console.log(b.y);
+    console.log(b.z);
+    console.log(b.gimmexyz());
+
+    // new.target
+    //accessing a static property/method
+
+    class Foo1 {
+        constructor() {
+            console.log("Foo: ", new.target.name);
+        }
+    }
+    class Bar1 extends Foo1 {
+        constructor() {
+            super();
+            console.log("Bar: ", new.target.name);
+        }
+        baz() {
+            console.log("baz: ", new.target);
+        }
+    }
+    var a = new Foo1();
+    // Foo: Foo
+    var b = new Bar1();
+    // Foo: Bar
+    // Bar: Bar
+
+    b.baz();
+    
+
+
+
+</script>
+
+</html>

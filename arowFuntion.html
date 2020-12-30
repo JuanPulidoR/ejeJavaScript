@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Funtion</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* (param1, param2, …, paramN) => { sentencias }
+    (param1, param2, …, paramN) => expresion
+        // Equivalente a: () => { return expresion; } 
+
+        // Los paréntesis son opcionales cuando hay un solo parámetro: singleParam => { statements } 
+        (singleParam) => { sentencias } singleParam => { sentencias }
+
+    // Una función sin parámetros requiere paréntesis: 
+    () => { sentencias } */
+
+    var f = ([a, b] = [1, 2], { x: c } = { x: a + b }) => a + b + c;
+
+    f(); // 6
+    console.log(f());
+
+    var elementos = [
+        "Hidrógeno",
+        "Helio",
+        "Litio",
+        "Beril­io"
+    ];
+   // El método map() crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+    ele=elementos.map(({ length }) => length); // [8, 6, 7, 9]
+    console.log(ele);
+</script>
+
+</html>
